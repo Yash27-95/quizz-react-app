@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://Yash27-95.github.io/quizz-react-app",
-  
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -14,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "canvas-confetti": "^1.9.3",
     "he": "^1.2.0",
     "react": "^19.1.0",
     "react-confetti": "^6.4.0",

@@ -3,6 +3,7 @@ import he from "he"
 import { useWindowSize } from 'react-use'
 import Confetti from 'react-confetti'
 import { FaCircleNotch } from "react-icons/fa6";
+import LaunchSadConfetti from './LaunchSadConfetti';
 
 export default function QuizzPage({ quizzData, shuffleArray, handlePlayAgain, reloading }) {
     const [data, setData] = useState(() => 
@@ -21,6 +22,8 @@ export default function QuizzPage({ quizzData, shuffleArray, handlePlayAgain, re
     const [score, setScore] = useState(0)
 
     const { width, height } = useWindowSize()
+
+    console.log(data)
 
     useEffect(() => {
         const container = document.querySelector('.content-quizz');
@@ -82,7 +85,10 @@ export default function QuizzPage({ quizzData, shuffleArray, handlePlayAgain, re
 
     return (
         <div className={reloading ? "content-reload" : "content-quizz"}>
-            {finish && 
+            {finish && data.every(obj => obj.selected_answer !== obj.correct_answer) &&
+                <LaunchSadConfetti />
+            }
+            {finish && data.some(obj => obj.correct_answer === obj.selected_answer) &&
                 <Confetti
                     width={width}
                     height={height}
